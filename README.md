@@ -60,7 +60,7 @@ The cohort was defined using `admissions`, `diagnoses_icd`, `procedures_icd`, an
 
 To evaluate independent risk factors, a multivariate logistic regression was executed in `statsmodels`:
 
-$$\operatorname{logit}(P(\text{Readmission} = 1)) = \beta_0 + \beta_1(\text{MS-DRG Tier}) + \beta_2(\text{Mech Vent}) + \beta_3(\text{Age}) + \varepsilon$$
+$$\operatorname{logit}(P(\text{Readmission} = 1)) = \beta_0 + \beta_1 \cdot \text{MS-DRG Tier} + \beta_2 \cdot \text{Mech Vent} + \beta_3 \cdot \text{Age}$$
 
 * Transformed regression coefficients into Odds Ratios ($e^\beta$) and 95% Confidence Intervals.
 * Standardized high-cost procedure flags to prevent model multicollinearity.
@@ -95,10 +95,10 @@ The primary deliverable features a customized Forest Plot communicating adjusted
 2. **Set up the virtual environment & install dependencies:**
    ```bash
    python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-pip install -r requirements.txt
+   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   pip install -r requirements.txt
 
 3. **Execute Pipeline:**
-   Run sql&notebook/01_cohort_extraction.ipynb against your MIMIC-IV database instance to generate the primary cohort table.
-   Run sql&notebook/02_drg_feature_engineering.ipynb against your MIMIC-IV database instance to merge DRG procedure information for the cohort.
-   Run Statistical Analysis: Open and execute sql&notebook/03_sepsis_readmission_modeling.ipynb to output regression tables and exported CSVs for Tableau.
+* Run sql&notebook/01_cohort_extraction.ipynb against your MIMIC-IV database instance to generate the primary cohort table.
+* Run sql&notebook/02_drg_feature_engineering.ipynb against your MIMIC-IV database instance to merge DRG procedure information for the cohort.
+* Run Statistical Analysis: Open and execute sql&notebook/03_sepsis_readmission_modeling.ipynb to output regression tables and exported CSVs for Tableau.
