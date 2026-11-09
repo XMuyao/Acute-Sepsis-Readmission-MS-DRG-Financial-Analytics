@@ -25,7 +25,7 @@ This project engineers an end-to-end analytical pipeline using **MIMIC-IV** clin
 ---
 
 ## Repository Structure
-
+```text
 ├── data/
 │   ├── raw/                   # Schema documentation & MIMIC-IV field definitions (GitIgnored)
 │   └── processed/             # Analytical cohort output CSVs
@@ -60,7 +60,8 @@ The cohort was defined using `admissions`, `diagnoses_icd`, `procedures_icd`, an
 
 To evaluate independent risk factors, a multivariate logistic regression was executed in `statsmodels`:
 
-$$\operatorname{logit}(P(\text{Readmission} = 1)) = \beta_0 + \beta_1 \cdot \text{MS-DRG Tier} + \beta_2 \cdot \text{Mech Vent} + \beta_3 \cdot \text{Age}$$
+$$\text{logit}(P(\text{Readmission} = 1)) = \beta_0 + \beta_1 \cdot \text{MS-DRG Tier} + \beta_2 \cdot \text{Mech Vent} + \beta_3 \cdot \text{Age}$$
+
 
 * Transformed regression coefficients into Odds Ratios ($e^\beta$) and 95% Confidence Intervals.
 * Standardized high-cost procedure flags to prevent model multicollinearity.
