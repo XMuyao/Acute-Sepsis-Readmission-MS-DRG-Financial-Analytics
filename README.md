@@ -37,13 +37,13 @@ This project engineers an end-to-end analytical pipeline using **MIMIC-IV** clin
 │   └── Sepsis_Readmission_Executive_Dashboard.twbx # Tableau packaged workbook
 ├── README.md                  # Executive project documentation
 └── requirements.txt           # Python dependencies
+```
+## Key Findings & Strategic Insights
+* **MS-DRG Severity Risk Gradient:** Patients admitted under MS-DRG 871 (Septicemia with MV >96 hours) demonstrated a 0.07 higher odds of 30-day readmission compared to MS-DRG 207.
+* **High-Cost Invasive Procedures:** Mechanical ventilation and acute dialysis were identified as primary independent procedural predictors for 30-day readmission, controlling for age and baseline comorbidity scores.
 
-Key Findings & Strategic Insights
-MS-DRG Severity Risk Gradient: Patients admitted under MS-DRG 871 (Septicemia with MV >96 hours) demonstrated a 0.07 higher odds of 30-day readmission compared to MS-DRG 207.
-High-Cost Invasive Procedures: Mechanical ventilation and acute dialysis were identified as primary independent procedural predictors for 30-day readmission, controlling for age and baseline comorbidity scores.
 
-
-Analytical Pipeline & Workflow
+## Analytical Pipeline & Workflow
 1. SQL Cohort Extraction Logic
 The cohort was defined using admissions, diagnoses_icd, procedures_icd, and drgcodes tables from MIMIC-IV:
 Inclusion: Adult patients ($\ge$18 years) with primary or secondary ICD-9/10 sepsis codes paired with acute organ dysfunction markers.
@@ -54,13 +54,13 @@ $$\operatorname{logit}(P(\text{Readmission} = 1)) = \beta_0 + \beta_1(\text{MS-D
 Transformed regression coefficients into Odds Ratios ($e^\beta$) and 95% Confidence Intervals.
 Standardized high-cost procedure flags to prevent model multicollinearity.
 
-Dashboard & Visualizations
+## Dashboard & Visualizations
 Executive Forest Plot (Tableau)
 The primary deliverable features a customized Forest Plot communicating adjusted Odds Ratios and 95% Confidence Intervals across clinical and procedural predictors:
 Circle Marks: Point estimates for Odds Ratios.
 Dual-Axis Gantt Bars: 95% Confidence Interval spans across a reference line set at $\text{OR} = 1.0$,
 
-How to Run This Repository
+## How to Run This Repository
 Prerequisites
 Python 3.10+
 DuckDB environment with access to MIMIC-IV v2.2 hosp module tables.
@@ -74,7 +74,7 @@ python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
 pip install -r requirements.txt
 
-Execute SQL Pipeline:
+## Execute SQL Pipeline:
 Run sql&notebook/01_cohort_extraction.ipynb against your MIMIC-IV database instance to generate the primary cohort table.
 Run sql&notebook/02_drg_feature_engineering.ipynb against your MIMIC-IV database instance to merge DRG procedure information for the cohort
 Run Statistical Analysis:
