@@ -40,9 +40,9 @@ This project engineers an end-to-end analytical pipeline using **MIMIC-IV** clin
 ```
 ---
 
-## 💡 Key Findings & Strategic Insights
+## Key Findings & Strategic Insights
 
-* **MS-DRG Severity Risk Gradient:** Patients admitted under **MS-DRG 871** (Septicemia with MV >96 hours) demonstrated a **0.07 higher odds** of 30-day readmission compared to MS-DRG 207.
+* **MS-DRG Severity Risk Gradient:** Patients admitted under **MS-DRG 871** (Septicemia with MV >96 hours) demonstrated a **0.07 higher odds** of 30-day readmission compared to **MS-DRG 207**.
 * **High-Cost Invasive Procedures:** Mechanical ventilation and acute dialysis were identified as primary independent procedural predictors for 30-day readmission, controlling for age and baseline comorbidity scores.
 
 ---
